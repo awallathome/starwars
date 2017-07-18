@@ -1,169 +1,185 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+	<meta charset="UTF-8">
+
 	<title>
-		
+		Starwars-AW RPG
 	</title>
+
 	
-	<script type="text/javascript">
+  <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+<body>
 
-// structure--> "player": [health, attack, counterattack]
-//Example: reference to luke's attack power = playerArray[0[1]]
-
-var luke = {
-	health: 100, 
-	power: 20, 
-	counter: 25
-}
-var hansolo = {
-	health: 125, 
-	power: 15, 
-	counter: 30
-}
-var bobafett = {
-	health: 100, 
-	power: 20, 
-	counter: 25
-}
-var ewok = {
-	health: 75, 
-	power: 10, 
-	counter: 45
-}
-
-//clicking a player images puts them here
-var player1 = [];
-//clicking an enemy image puts them here
-var opponent = [];	
-//loads players into the characters area on page load
-	//also loads each players health level into their divs
-function loadCharacters(){
-	$("playerbutton").push(this).player1;
-	$("#lukehealth").html= (luke.health);
-	$("#hanhealth").html= (hansolo.health);
-	$("#bobahealth").html= (bobafett.health);
-	$("#ewokhealth").htmld= (ewok.health);
-		//selecting a player moves them to the player1 area
-	//$("#selectPlayer1").on(click,function(){});
-
-	};
-
-function attack() {
-		opponent[0] = (opponent[0] - player1[1]);
-		player1[0] = (player1[0] - opponent[2]);
-	};	
-
-function counter() {
-		$("#attack").on(click, )
-	};
-
-//the individual functions within the game
-var game = {
-
-
-	//selecting an enemy moves them to the opponent area
-	
-}
-</script>
 
 <style>
-h2 {
+
+h1, h2 {
 	color: white;
 }
+
 body {
-		background-image: url("images/starwarswallpaper.jpg") ;
-		background-size: 100% 100vh;
-		background-repeat: no-repeat;
+	background-image: url("images/starwarswallpaper.jpg");
+	background-size: 100% 100vh;
+	background-repeat: no-repeat;
+
 	}
-.playerArray {
+
+.playerbutton {
+	margin: 10px;
+	background-color: white;
+	display: inline-block;
 
 }
 
-ol {
+ol li {
 	display: inline;
 }
 
 img {
-	height: 150px;
-	width: 150px;
-}
-p {
-	margin-top: 5px;
-	margin-bottom: 5px;
+	height: 110px;
+	width: 110px;
 }
 
+p {
+	font-size: 12px;
+	max-width: 110px;
+	color: black;
+	text-align: center;
+	display: block;
+	margin: 0px;
+}
+
+
 </style>
-</head>
-<body onload="loadCharacters()">
+
 
 <div>
 <h1>Star Wars RPG</h1>
 </div>
 
-<div id="players">
-<h2>Characters</h2>
+<div id= "players">
+<h2 id="characters">Characters</h2>
 <ol>
 	<li>
-		<button id="luke playerbutton">
+		<div id="lukeplayer" class="playerbutton">
 			<p>Luke Skywalker</p>
-			<img src="images/luke.jpg" id="lukeimage">
-			<p id="lukehealth"></p>
-		</button>
+			<img src="images/luke.jpg" id="lukeimage" alt="Luke Skywalker">
+			<p id="lukehealth">100</p>
+		</div>
 	</li>
 	<li>
-		<button id="han playerbutton">
+		<div id="hanplayer" class="playerbutton">
 			<p>Han Solo</p>
-			<img src="images/hansolo.jpg" id="hansoloimage">
-			<p id="hanhealth"></p>
-		</button>
+			<img src="images/hansolo.jpg" id="hansoloimage" alt="Han Solo">
+			<p id="hanhealth">125</p>
+		</div>
 	</li>
 	<li>
-		<button id="boba playerbutton">
+		<div id="bobaplayer" class="playerbutton">
 			<p>Boba Fett</p>
-			<img src="images/bobafett.jpg" id="bobafettimage">
-			<p id="bobahealth"></p>
-		</button>
+			<img src="images/bobafett.jpg" id="bobafettimage" alt="Boba Fett">
+			<p id="bobahealth">100</p>
+		</div>
 	</li>
 	<li>
-		<button id="ewok playerbutton">
-			<p>4th Ewok from Left</p>
-			<img src="images/ewok.jpg" id="ewokimage">
-			<p id="ewokhealth"></p> 
-		</button>
+		<div id="ewokplayer" class="playerbutton">
+			<p>Random Ewok</p>
+			<img src="images/ewok.jpg" id="ewokimage" alt="Random Ewok">
+			<p id="ewokhealth">75</p>
+		</div>
 	</li>
 </ol>
 </div>
 
-<div id="player1">
+<div id="playerArea" class="yourplayer">
 <h2>Your Character</h2>
+
 </div>
 
-<div>
-	
-</div>
 
-<div>
+<div id="availableArea" class="pickopponent">
 <h2>Enemies Available to Attack</h2>
+
 </div>
 
-<div>
-	
-</div>
-<button>Attack</button>
-<div id="opponent">
-	
-</div>
-<div>
+<button>Use the Force</button>
+
+<div id="opponentArea" class="hitopponent">
 	<h2>Defender</h2>
+
 </div>
 
 <div> 
 	<button>Restart</button>
 </div>
+<script>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-  		integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
-  		crossorigin="anonymous">		
-  	</script>
+
+var luke = {
+	health: 100, 
+	power: 20, 
+	counter: 25,
+}
+var hansolo = {
+	health: 125, 
+	power: 15, 
+	counter: 30,
+}
+var bobafett = {
+	health: 100, 
+	power: 20, 
+	counter: 25,
+}
+var ewok = {
+	health: 75, 
+	power: 10, 
+	counter: 45,
+}
+
+var playerArray = {
+	#lukeplayer;
+	#hanplayer;
+	#bobplayer;
+	#ewokplayer;
+}
+
+//loads players into the characters area on page load
+	//also loads each players health level into their divs
+//function selectPlayer(){
+//	$(".playerbutton").click (function() {
+//		$(this).push(player1);
+//}};
+
+
+$(".playerbutton").one("click", function(){
+	$(".playerbutton").detach();
+	$("#characters").detach();
+	$("#playerArea").append(this);
+	$(".playerbutton").
+//	if (.hasBeenClicked = false
+//	$("#availableArea").appendTo(".playerbutton");
+});
+
+//function attack() {
+//		opponent[0] = (opponent[0] - player1[1]);
+//		player1[0] = (player1[0] - opponent[2]);
+//	};
+
+
+//function counter() {
+//		$("#attack").on(click, )
+//	};
+
+
+
+
+//	loadCharacters();
+
+</script>
+	
 </body>
+
 </html>
