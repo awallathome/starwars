@@ -115,6 +115,47 @@ p {
 <div> 
 	<button>Restart</button>
 </div>
+
+<style>
+
+h1, h2 {
+	color: white;
+}
+
+body {
+	background-image: url("images/starwarswallpaper.jpg");
+	background-size: 100% 100vh;
+	background-repeat: no-repeat;
+
+	}
+
+.playerbutton {
+	margin: 10px;
+	background-color: white;
+	display: inline-block;
+
+}
+
+ol li {
+	display: inline;
+}
+
+img {
+	height: 110px;
+	width: 110px;
+}
+
+p {
+	font-size: 12px;
+	max-width: 110px;
+	color: black;
+	text-align: center;
+	display: block;
+	margin: 0px;
+}
+
+
+</style>
 <script>
 
 
@@ -139,35 +180,33 @@ var ewok = {
 	counter: 45,
 }
 
-var playerArray = {
-	#lukeplayer;
-	#hanplayer;
-	#bobplayer;
-	#ewokplayer;
-}
 
-//loads players into the characters area on page load
-	//also loads each players health level into their divs
-//function selectPlayer(){
-//	$(".playerbutton").click (function() {
-//		$(this).push(player1);
-//}};
-
-
+//THE BELOW SCRIPT WAS SUPPOSED TO MOVE THE UNCLICKED STAR WARS ACTORS TO THE PLAYERAREA DIV WHERE THE USER CHOOSES AN ENEMY...COULD NOT FIND THE FUNCTION FOR IT. 
 $(".playerbutton").one("click", function(){
-	$(".playerbutton").detach();
+	//CODE BELOW IS REMOVING THE CHOSEN PLAYER FROM THE TOP ROW
+	$(this).detach();
+	//CODE BELOW IS MOVING ALL OTHER CHARACTERS OUT OF THE TOP ROW
 	$("#characters").detach();
+	//CODE BELOW MOVE THEM INTO THE SECOND AREA
+	$(".playerbutton").appendTo("#availableArea");
+	//CODE BELOW REMOVES THE .playerbutton CLASS FROM REMAINING PLAYERS TO KEEP FROM REPEATING THE FIRST CLICK LISTENER
+	$(".playerbutton").removeClass(".playerbutton");
+	//CODE BELOW MOVES THE CHOSEN CHARACTER INTO THE OFFENSIVE ROW
 	$("#playerArea").append(this);
-	$(".playerbutton").
-//	if (.hasBeenClicked = false
-//	$("#availableArea").appendTo(".playerbutton");
+
 });
+
+//THE BELOW CODE IS CONFLICTING WITH THE PREVIOUS LISTENER AND NOT SELECTING THE ENEMY... 
+$("#availableArea").one("click", function(){
+	$(this).appendTo(".hitopponent");
+});
+
+//BELOW ARE TWO (UNDERDEVELOPED) ATTACK SCRIPTS
 
 //function attack() {
 //		opponent[0] = (opponent[0] - player1[1]);
 //		player1[0] = (player1[0] - opponent[2]);
 //	};
-
 
 //function counter() {
 //		$("#attack").on(click, )
@@ -175,8 +214,6 @@ $(".playerbutton").one("click", function(){
 
 
 
-
-//	loadCharacters();
 
 </script>
 	
